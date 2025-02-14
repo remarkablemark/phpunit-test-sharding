@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Find and split files
-        uses: remarkablemark/find-and-split@v1.0.2
+        uses: remarkablemark/find-and-split@v1.0.3
         id: tests
         with:
           chunk: ${{ matrix.shard }}
