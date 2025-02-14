@@ -15,6 +15,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
       - name: Find and split files
         uses: remarkablemark/find-and-split@v1.0.3
         id: tests
@@ -22,9 +25,6 @@ jobs:
           chunk: ${{ matrix.shard }}
           directory: tests
           pattern: '*Test.php'
-
-      - name: Install dependencies
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Run tests
         run: ./vendor/bin/phpunit --testdox ${{ steps.tests.outputs.files }}
