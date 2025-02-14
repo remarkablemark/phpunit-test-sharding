@@ -21,7 +21,7 @@ jobs:
         with:
           chunk: ${{ matrix.shard }}
           directory: tests
-          pattern: '*.Test.php'
+          pattern: '*Test.php'
 
       - name: Run tests
         run: ./vendor/bin/phpunit --testdox ${{ steps.tests.outputs.files }}
